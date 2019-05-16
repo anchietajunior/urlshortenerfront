@@ -8,7 +8,7 @@
       <div class="navbar-nav" id="navbar-links">
         <router-link class="nav-item nav-link active" to="/subscribe">Subscribe</router-link>
         <router-link class="nav-item nav-link active" to="/login">Login</router-link>
-        <router-link class="nav-item nav-link active" to="/">Links</router-link>
+        <router-link class="nav-item nav-link active" to="/links">Links</router-link>
       </div>
     </div>
   </nav>

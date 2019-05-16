@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import UserLogin from './views/UserLogin.vue'
 import UserSubscribe from './views/UserSubscribe.vue'
+import Links from './views/Links.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: '/subscribe',
       name: 'subscribe',
       component: UserSubscribe
+    },
+    {
+      path: '/links',
+      name: 'links',
+      component: Links
     }
   ]
 })

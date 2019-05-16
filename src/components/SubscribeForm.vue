@@ -44,9 +44,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { checkServerIdentity } from 'tls';
-
 export default {
   data () {
     return {
@@ -59,16 +56,17 @@ export default {
   },
   computed: {
     formData: function() { 
-      return { email: this.email, 
-                password: this.password, 
-                password_confirmation: this.passwordConfirmation 
-              }
+      return { 
+        email: this.email, 
+        password: this.password, 
+        password_confirmation: this.passwordConfirmation 
+      }
     }
   },
   methods: {
     checkForm () {
       this.errors = [];
-      if (this.email && this.password && this.passwordConfirmation) {
+      if (this.email && this.password && this.passwordConfirmation && this.password == this.passwordConfirmation) {
         return true;
       } else {
         if (this.email == '') {
@@ -89,24 +87,12 @@ export default {
     submitForm (e) {
       e.preventDefault();
       if (this.checkForm()) {
-        this.sendRequest()
+        this.$store.dispatch('subscribe', this.formData);
+        this.subscribed = true
       } else {
         return;
       }
-    },
-    sendRequest (){
-      console.log('Sending request...');
-      axios.post('http://localhost:3000/subscribe', this.formData)
-        .then(res => {
-          console.log(res);
-          this.errors = [];
-          this.subscribed = true;
-        })
-        .catch(error => {
-          console.log(error.response.data)
-          this.errors.push(error.response.data.message)
-        })
-    }  
+    } 
   }
 }
 </script>
